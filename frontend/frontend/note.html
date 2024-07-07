@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document Upload</title>
+   <!-- Font Awesome CDN Link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <style>
+      /* Add your custom styles here */
+      body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      .header {
+         background: #333;
+         color: #fff;
+         padding: 1rem 2rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      .header .logo {
+         font-size: 1.5rem;
+         text-decoration: none;
+         color: #fff;
+      }
+
+      .navbar a {
+         color: #fff;
+         text-decoration: none;
+         margin: 0 1rem;
+      }
+
+      .upload-section {
+         padding: 2rem;
+         max-width: 800px;
+         margin: 0 auto;
+      }
+
+      .upload-section .heading {
+         text-align: center;
+         font-size: 2.5rem;
+         margin-bottom: 2rem;
+      }
+
+      .upload-form {
+         background: #fff;
+         padding: 2rem;
+         border-radius: 5px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         text-align: center;
+      }
+
+      .upload-form input[type="file"] {
+         display: block;
+         margin: 0 auto 1rem auto;
+         font-size: 1rem;
+      }
+
+      .upload-form .btn {
+         display: inline-block;
+         padding: 0.7rem 1.5rem;
+         background: #333;
+         color: #fff;
+         border-radius: 5px;
+         text-decoration: none;
+         text-align: center;
+         cursor: pointer;
+         border: none;
+      }
+
+      .upload-form .btn:hover {
+         background: #555;
+      }
+
+      .document-list {
+         margin-top: 2rem;
+         background: #fff;
+         padding: 2rem;
+         border-radius: 5px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .document-list h3 {
+         margin-bottom: 1rem;
+      }
+
+      .document-list ul {
+         list-style: none;
+         padding: 0;
+      }
+
+      .document-list ul li {
+         margin-bottom: 0.5rem;
+         font-size: 1rem;
+      }
+
+      .footer {
+         background: #333;
+         color: #fff;
+         text-align: center;
+         padding: 1rem;
+         position: absolute;
+         bottom: 0;
+         width: 100%;
+      }
+   </style>
+</head>
+<body>
+
+<header class="header">  
+   <section class="flex">
+      <a href="home.html" class="logo">Journey For Learning</a>
+      <nav class="navbar">
+         <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+         <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+         <a href="subject.html"><i class="fas fa-graduation-cap"></i><span>Subject</span></a>
+         <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+         <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+      </nav>
+   </section>
+</header>
+
+<section class="upload-section">
+   <h1 class="heading">Upload Document</h1>
+   <form class="upload-form">
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.txt">
+      <button type="button" class="btn" onclick="uploadDocument()">Upload</button>
+   </form>
+
+   <div class="document-list">
+      <h3>Uploaded Documents</h3>
+      <ul id="documentList"></ul>
+   </div>
+</section>
+
+<footer class="footer">
+   &copy; copyright @ 2024 by <span>journey_for_learning</span> | all rights reserved!
+</footer>
+
+<script>
+   const documentList = document.getElementById('documentList');
+
+   function uploadDocument() {
+      const fileInput = document.getElementById('fileInput');
+      if (fileInput.files.length > 0) {
+         const file = fileInput.files[0];
+         const listItem = document.createElement('li');
+         listItem.textContent = file.name;
+         documentList.appendChild(listItem);
+         fileInput.value = '';
+         alert('File uploaded successfully!');
+      } else {
+         alert('Please select a file to upload.');
+      }
+   }
+</script>
+
+</body>
+</html>
